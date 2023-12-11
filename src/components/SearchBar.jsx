@@ -1,9 +1,12 @@
-import { useState } from "react";
-
-function SearchBar({ searchInput, setSearchInput }) {
+function SearchBar({ searchInput, setSearchInput, setInStock }) {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
+  };
+
+  const handleCheck = (e) => {
+    const isChecked = e.target.checked;
+    setInStock(isChecked);
   };
 
   return (
@@ -15,6 +18,8 @@ function SearchBar({ searchInput, setSearchInput }) {
         onChange={handleChange}
         value={searchInput}
       />
+      <input type="checkbox" id="checkbox" onChange={handleCheck} />
+      <label>Only show products in stock</label>
     </div>
   );
 }
